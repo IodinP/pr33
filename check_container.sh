@@ -1,5 +1,5 @@
 #!/bin/bash
-CONTAINER_NAME=$1 # Имя контейнера берем из аргумента запуска
+CONTAINER_NAME=$1 
 DATE=$(date +%Y-%m-%d)
 LOGFILE="container-status-$DATE.log"
 
@@ -8,7 +8,7 @@ if [ -z "$CONTAINER_NAME" ]; then
     exit 1
 fi
 
-# Проверяем, запущен ли контейнер
+
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
     echo "Контейнер $CONTAINER_NAME уже запущен."
     STATUS=$(docker ps -f name=$CONTAINER_NAME --format "{{.Status}}")
